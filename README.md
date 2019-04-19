@@ -1,6 +1,6 @@
 # CodeFights
 
-* En este repositorio se encuentran las soluciones a los problemas de www.CodeFights.com 
+* En este repositorio se encuentran las soluciones a los problemas de www.codesignal.com (ex-codefigths.com)
 
 * Codificados en python v 3.5.2  con ayuda del ide PyCharm.
 

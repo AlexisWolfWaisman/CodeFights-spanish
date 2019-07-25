@@ -1,18 +1,14 @@
 #l, r = eval(dir()[0])
 def comfortableNumbers(l, r):
-  parejas = []
-  sumardigitos = lambda valor : sum([int(x) for x in str(valor) ])
-  busqueda = lambda e : [x for x in range( e - sumardigitos(e), e+1+sumardigitos(e) ) ]
-  segmento =  range(l,r+1)
-  for primElem in segmento:
-    afinidadPrimElem = busqueda(primElem)
-    for segElem in afinidadPrimElem:
-      comun = set(afinidadPrimElem).intersection(set(busqueda(segElem)))
-      comun = comun.intersection(set(segmento))
-      par = [primElem,segElem]
-      if (primElem in comun and segElem in comun and sorted(par) not in parejas and primElem != segElem):
-        parejas.append(sorted(par))
-  print(len(parejas))
-  return len(parejas)
+  pairs = []
+  sd = lambda valor : sum([int(x) for x in str(valor) ])
+  b = lambda e : (e-sd(e),e,e+sd(e) )
+  c = lambda l1,l2 : ( l1[1] >= l2[0] and l1[1] <= l2[2]) and  (l2[1] >= l1[0] and l2[1] <= l1[2])
+  seg =  range(l,r+1)
+  h = [b(x) for x in seg]
+  while h:
+      x, *h = h
+      pairs += [(x[1],i[1]) for i in h if c(x,i)]
+  return len(pairs)
 
-print(comfortableNumbers(1,1000))
+print(comfortableNumbers(10,12))

@@ -2,13 +2,11 @@
 def comfortableNumbers(l, r):
   pairs = []
   sd = lambda valor : sum([int(x) for x in str(valor) ])
-  b = lambda e : (e-sd(e),e,e+sd(e) )
-  c = lambda l1,l2 : ( l1[1] >= l2[0] and l1[1] <= l2[2]) and  (l2[1] >= l1[0] and l2[1] <= l1[2])
+  c = lambda x,y : ( x >= y-sd(y) and x <= y+sd(y)) and  (y >= x-sd(x) and y <= x+sd(x) )
   seg =  range(l,r+1)
-  h = [b(x) for x in seg]
-  while h:
-      x, *h = h
-      pairs += [(x[1],i[1]) for i in h if c(x,i)]
+  while seg:
+      x, *seg = seg
+      pairs += [(x,i) for i in seg if c(x,i)]
   return len(pairs)
 
 print(comfortableNumbers(10,12))
